@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Calculator from "./components/Calculator"
+import NumberProvider  from "./components/NumberProvider";
 
 function App() {
   const [data, setData] = useState([]);
@@ -19,19 +21,9 @@ function App() {
   }, [data]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Videos</h1>
-      </header>
-      {data.map((video,id) =>(
-        <div key={id}>
-          <h2>{video.name}</h2>
-          <video height={200} controls 
-                 src ={video.video_url}
-                 poster={video.thumbnail}></video>
-        </div>
-      ))}
-    </div>
+    <NumberProvider>
+      <Calculator />
+    </NumberProvider>
   );
 }
 
